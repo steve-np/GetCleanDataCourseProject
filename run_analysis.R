@@ -110,7 +110,8 @@ df.f <- melt(df.final, id = 2:1, measure.vars = 3:62, na.rm = TRUE)
 ## Results are already grouped, but just to make sure
 df.f <- group_by(df.f, Activity, Subject)
 ## Cast the df so that we just have the mean of each column, by Activity, by Subject
-df.f <- dcast(df.g, c("Activity", "Subject") ~ variable, mean, drop = TRUE)
+## df.f <- dcast(df.g, c("Activity", "Subject") ~ variable, mean, drop = TRUE) # The line as submitted references "df.g" - doesn't exist
+df.f <- dcast(df.f, c("Activity", "Subject") ~ variable, mean, drop = TRUE)
 # Now write this tidy data set as a txt file for upload
 final_dataset.txt <- write.table(df.f, file = "final_dataset.txt", row.names = FALSE)
 
